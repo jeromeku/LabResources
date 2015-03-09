@@ -47,6 +47,7 @@ class PoissonRateInference(UnivariateBayesianInference):
             Upper limit on rate for evaluating the PDF
         """
         self.intvl = intvl
+        self.n = n
         self.r_l, self.r_u = r_l, r_u
         self.nr = nr
         self.rvals = linspace(r_l, r_u, nr)
@@ -59,7 +60,7 @@ class PoissonRateInference(UnivariateBayesianInference):
         Evaluate the Poisson likelihood function on a grid of rates.
         """
         r_intvl = self.intvl*rvals
-        return (r_intvl)**n * exp(-r_intvl)
+        return (r_intvl)**self.n * exp(-r_intvl)
 
 
 class BinomialInference(UnivariateBayesianInference):
@@ -98,7 +99,7 @@ class BinomialInference(UnivariateBayesianInference):
         Evaluate the Binomial likelihood function on a grid of alphas.
         """
         # Ignore the combinatorial factor (indep. of alpha).
-        return (alphas)**n * (1.-alphas)**(self.n_trials - self.n)
+        return (alphas)**self.n * (1.-alphas)**(self.n_trials - self.n)
 
 
 #-------------------------------------------------------------------------------
