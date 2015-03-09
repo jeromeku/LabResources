@@ -15,11 +15,12 @@ from scipy import stats, special, integrate
 
 from poisson_binomial import PoissonRateInference, BinomialInference
 
-import myplot
-from myplot import close_all
-
-ion()
-#myplot.tex_on()
+# Optional plot customization module:
+# import myplot
+# from myplot import close_all
+# 
+# ion()
+# #myplot.tex_on()
 
 
 
